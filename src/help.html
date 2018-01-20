@@ -1,0 +1,78 @@
+<html>
+<head>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+</head>
+<body>
+	<div class="jumbotron jumbotron-fluid">
+		<div class="container">
+			<h1>A bookmarklet guide</h1>
+			<p>
+				<b>What are bookmarklets and what are they good for?</b>
+			</p>
+		</div>
+	</div>
+<div class="container">
+	<div class="row">
+		<div class="col-md-3">
+			<nav>
+				<ul class="nav flex-column" id="sidebar">
+					<li class="nav-item"><a class="nav-link" href="#sec0">Introduction</a></li>
+					<li class="nav-item"><a class="nav-link" href="#sec1">Dangerous?</a></li>
+					<li class="nav-item"><a class="nav-link" href="#sec2">Technically</a></li>
+					<li class="nav-item"><a class="nav-link" href="#sec3">What is it good for?</a></li>
+					<li class="nav-item"><a class="nav-link" href="#sec4">How to use this generator?</a></li>
+					<li class="nav-item"><a class="nav-link" href="index.html">&laquo; Go to the generator</a></li>
+				</ul>
+			</nav>
+		</div>
+		<div class="col-md-9">
+			<h2 id="sec0">Introduction</h2>
+			<p>Bookmarklets are "Bookmarks" (Chrome, Firefox) or "Favorites" (Internet Explorer/Edge).</p>
+			<p>In contrast to regular bookmarks they will not lead you directly to another page. Instead they will execute a script on the current website.</p>
+
+			<h2 id="sec1">Are bookmarklets dangerous?</h2>
+			<p>A bookmarklet can do everything in a page that a developer can accomplish with JavaScript. It will be executed within your session as if yourself were doing it. So when you're logged in to a system, the script is as well.</p>
+			<p>So bookmarklets can actually be dangerous.</p>
+			<p>Never use a bookmarklet that you did not create by yourself (or if you have the slightest doubt in the person recommending a bookmarklet to you).</p>
+
+			<h2 id="sec2">What's a bookmarklet technically</h2>
+			<p>A bookmark that instead of an URL (starting with http://...) contains a Script starting with "javascript:"</p>
+			<p>For example: <code>javascript:alert(document.title);</code></p>
+			<p>A bookmarklet can utilize everything on the page by using JavaScript.</p>
+
+			<h2 id="sec3">What is it good for?</h2>
+			<p>Advanced bookmarklets may download code and run little applications on your website.</p>
+
+			<h3>Personal use</h3>
+			<ul>
+				<li>Use the current URL, send a query to a QR Code service and show the QR code. So you can easily open the website from your computer on your smartphone by scanning the QR code.</li>
+				<li>Remove elements of a page you visit regularly, that annoy you. E.g. "premium" content teasers that you would need to pay for.</li>
+				<li>Remove ads from articles for a clean reading experience</li>
+				<li>Shop for cheap: Remove products from a shop listing that are not reduced at least 50%.</li>
+				<li>...</li>
+			</ul>
+
+			<h3>Business / Development / Testing use</h3>
+			<ul>
+				<li>In an online-shop: open a list of categories and read out how many products it lists. Output a list in a new window</li>
+				<li>Demo image quality differences: Replace image URLs in a page with equal (local or parameterized) images that showcase different compression levels.</li>
+				<li>To get quicker approvals: Showcase UI/UX changes by modifying the HTML structure.</li>
+				<li>Find HTML-Comments for e.g. render time or publish date or technical identifiers and show them in an alert.</li>
+				<li>Find inline Javascript/CSS and show it in a table.</li>
+				<li>Find tracking data and show it in a table.</li>
+				<li>...</li>
+			</ul>
+
+			<h2>How to use the bookmarklet generator?</h2>
+			<p>Enable your boomark bar. In Chrome it's Ctrl+Shift.</p>
+			<p>First: have a javascript snippet at hand. It must be executable on the browser console without errors and show the desired results.</p>
+			<p>Remove all comments from the code if you have any. Take care that every line is closed with a semicolon.</p>
+			<p>Second: open <a href="index.html">bookmarklet generator</a></p>
+			<p>Copy your JavaScript snippet into the text box, also give your Bookmarklet a name (this will show in your bookmarks)</p>
+			<p>A button to your right shows your Bookmarklet name. Press it and it will execute on the generator's page. Drag &amp; Drop it to your Bookmark bar.</p>
+		</div>
+	</div>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+</body>
+</html>

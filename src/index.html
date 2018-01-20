@@ -1,0 +1,126 @@
+<html>
+<head>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+	<style>
+	.js-in {
+		width:90%;
+		height: 200px;
+	}
+	.js-label {
+		width:90%;
+	}
+	.js-out-apply {
+		width:100%;
+	}
+	.js-out-send {
+		width:100%;
+	}
+	@media (max-width:767px) {
+		.result {
+			margin-top: 20px;
+		}
+	}
+	</style>
+</head>
+<body>
+	<div class="jumbotron jumbotron-fluid">
+		<div class="container">
+			<h1>Create your bookmarklet</h1>
+			<p>
+				<b>Simply copy &amp; paste your plain javascript here and receive an applicable or distributable bookmarklet</b>
+			</p>
+			<p>
+				The bookmarklet will utilize jQuery even if not available. If jQuery is available it will reuse it from the active website.<br />
+				Your code will not be sent or stored anywhere by this tool. All magic happens in your browser.<br />
+				<a href="help.html">Also check out the bookmarklet introduction page</a>
+			</p>
+		</div>
+	</div>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12 col-md-8">
+			<div class="form-group">
+				<label for="js-label">Name your bookmarklet:</label>
+				<input type="text" class="js-label" id="js-label" value="My Bookmarklet" />
+			</div>
+			<div class="form-group">
+				<label for="js-in">Your plain JS code:</label>
+				<textarea class="js-in" id="js-in">alert(1);</textarea>
+			</div>
+			<button class="btn btn-primary" id="generate">Generate</button>
+		</div>
+		<div class="col-sm-12 col-md-4">
+			<div id="result" class="result card">
+				<h2>Your bookmarklet</h2>
+				<p>Drag &amp; Drop this:</p>
+				<p>
+					<a href="#" class="btn btn-secondary js-out-apply" id="js-out"></a>
+				</p>
+				<p>or:</p>
+				<p>
+					<a href="#" class="btn btn-info js-out-send" id="js-out-send">Download HTML for E-Mail</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Copy&Paste Link -->
+<!-- Download HTML file to share -->
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+	var transferCode = function() {
+		var code = $('script#template').text().replace('%%code%%', $('textarea').val());
+		$('#js-out').attr('href', 'javascript:'+code).text($('#js-label').val());
+		var download = $('script#download').text().replace('%%body%%', $('#result')[0].outerHTML);
+		$('#js-out-send')
+			.attr('href', 'data:application/octet-stream;charset=utf-8;base64,'+btoa(download))
+			.attr('download',$('#js-label').val()+'.html');
+	};
+	$('#js-label, #js-in').change(function() {
+		transferCode();
+	});
+	$('#js-label, #js-in').keyup(function() {
+		transferCode();
+	});
+	$('button#generate').click(function() {
+		$('#js-label').change();
+		$('html, body').animate({
+			scrollTop: ($("#js-out").offset().top)
+		}, 'slow');
+	});
+
+	$(function() {
+		transferCode();
+	});
+</script>
+<script type="data/template" id="template">
+javascript: if (typeof jQuery == "undefined") {
+	var jqscript = document.createElement('script');
+	jqscript.src = "https://code.jquery.com/jquery-3.1.1.min.js";
+	document.getElementsByTagName('head')[0].appendChild(jqscript);
+}
+var w;
+var theInterval = window.setInterval(function() {
+	if (typeof jQuery != "undefined") {
+			window.clearInterval(theInterval);
+			%%code%%
+	}
+}, 1000);
+</script>
+<script type="data/template" id="download">
+<html>
+	<head>
+		<title>Bookmarklet</title>
+		<style>
+			body { font-family: Arial, Helvetica, Verdana; }
+			.hide-on-sent { display:none; }
+		</style>
+	</head>
+	<body>
+		%%body%%
+	</body>
+</html>
+</script>
+</body>
+</html>
