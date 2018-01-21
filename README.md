@@ -8,3 +8,4 @@ Simple paste working JS to generate a bookmarklet.
 - Offers download of the bookmarklet to send to collegues or friends.
 - Has jQuery included for convenience.
 
+Check out http://keinerweiss.de/bookmarklet/
